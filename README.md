@@ -260,7 +260,7 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 
 <div align="center">
 
-**Built with ❤️ by [Mariwan](https://github.com/mariwan)**
+**Built with ❤️ by [Mariwan](https://github.com/mariwan001)**
 
 *Decode the Digital Core • Crafting Intelligent Systems with Precision*
 
