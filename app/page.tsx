@@ -5,6 +5,7 @@ import FooterSection from "@/sections/Footer";
 import Hero from "@/sections/Hero";
 import Navbar from "@/sections/Navbar";
 
+
 export default function Home() {
   return (
     <div className="w-full bg-black">

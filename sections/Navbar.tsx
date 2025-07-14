@@ -2,10 +2,12 @@
 
 import React, { useState, useEffect } from 'react'
 import { motion } from "framer-motion"
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,8 +20,9 @@ const Navbar = () => {
   }, []);
 
   // Add handleMenuClick function
-  const handleMenuClick = () => {
+  const handleMenuClick = (path: string) => {
     setIsOpen(false); // This will close the menu smoothly
+    if (path) router.push(path);
   };
 
   return (
@@ -87,7 +90,7 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <nav className='hidden md:block'>
             <ul className='flex flex-wrap gap-x-4 lg:gap-x-8 gap-y-2 '>
-              <li tabIndex={0} className='hover:text-stone-500 hover:transition-all duration-300 cursor-pointer px-2 py-1 rounded-md focus:outline-none focus:bg-neutral-800/50'>Translate</li>
+              <li tabIndex={0} className='hover:text-stone-500 hover:transition-all duration-300 cursor-pointer px-2 py-1 rounded-md focus:outline-none focus:bg-neutral-800/50' onClick={() => router.push('/translate')}>Translate</li>
               <li tabIndex={0} className='hover:text-stone-500 hover:transition-all duration-300 cursor-pointer px-2 py-1 rounded-md focus:outline-none focus:bg-neutral-800/50'>Protocol Flow</li>
               <li tabIndex={0} className='hover:text-stone-500 hover:transition-all duration-300 cursor-pointer px-2 py-1 rounded-md focus:outline-none focus:bg-neutral-800/50'>Binary Lens</li>
               <li tabIndex={0} className='hover:text-stone-500 hover:transition-all duration-300 cursor-pointer px-2 py-1 rounded-md focus:outline-none focus:bg-neutral-800/50'>Algorithmic Pulse</li>
@@ -124,7 +127,7 @@ const Navbar = () => {
               shadow-[0_0_15px_-3px_rgba(34,197,94,0.05)]
             '>
               <li 
-                onClick={handleMenuClick}
+                onClick={() => handleMenuClick('/translate')}
                 tabIndex={isOpen ? 0 : -1}
                 className='
                   hover:text-stone-500 transition-all duration-300 cursor-pointer
@@ -135,7 +138,7 @@ const Navbar = () => {
                 Translate
               </li>
               <li 
-                onClick={handleMenuClick}
+                onClick={() => handleMenuClick('/protocol-flow')}
                 tabIndex={isOpen ? 0 : -1}
                 className='
                   hover:text-stone-500 transition-all duration-300 cursor-pointer
@@ -146,7 +149,7 @@ const Navbar = () => {
                 Protocol Flow
               </li>
               <li 
-                onClick={handleMenuClick}
+                onClick={() => handleMenuClick('/binary-lens')}
                 tabIndex={isOpen ? 0 : -1}
                 className='
                   hover:text-stone-500 transition-all duration-300 cursor-pointer
@@ -157,7 +160,7 @@ const Navbar = () => {
                 Binary Lens
               </li>
               <li 
-                onClick={handleMenuClick}
+                onClick={() => handleMenuClick('/algorithmic-pulse')}
                 tabIndex={isOpen ? 0 : -1}
                 className='
                   hover:text-stone-500 transition-all duration-300 cursor-pointer
