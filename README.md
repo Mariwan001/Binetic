@@ -260,12 +260,6 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 
 <div align="center">
 
-**Built with ❤️ by [Mariwan](https://github.com/mariwan)**
-
-*Decode the Digital Core • Crafting Intelligent Systems with Precision*
-
-[![GitHub stars](https://img.shields.io/github/stars/your-username/yes-no?style=social)](https://github.com/your-username/yes-no)
-[![GitHub forks](https://img.shields.io/github/forks/your-username/yes-no?style=social)](https://github.com/your-username/yes-no)
-[![GitHub issues](https://img.shields.io/github/issues/your-username/yes-no)](https://github.com/your-username/yes-no/issues)
+**Built with ❤️ by [Mariwan](https://github.com/mariwan001)**
 
 </div>
