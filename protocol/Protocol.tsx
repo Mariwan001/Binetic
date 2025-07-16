@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, useEffect, useRef } from 'react'
-import { Definition, DescText1, DescText2, MainTextQuestion, Questions } from './index.ts'
+import { Definition, DescText1, DescText2, MainTextQuestion, Questions } from './index'
 
 const highlightHeader = (text: string) => {
   // First, match the phrase 'Protocol Flow' as a whole, then fallback to individual words
