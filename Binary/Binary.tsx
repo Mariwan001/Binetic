@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react';
-import { mainText, smallMainText } from './BinaryText';
+import { mainText, smallMainText } from '../Binary/BinaryText';
 
 const tips = [
   'No variables',
