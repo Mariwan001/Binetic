@@ -15,6 +15,8 @@ const Binary = () => {
   const [textSharp, setTextSharp] = useState(false);
   const [tipReveal, setTipReveal] = useState([false, false, false, false]);
   const [lensSize, setLensSize] = useState(420);
+  // Add state for orbit radii
+  const [orbitRadii, setOrbitRadii] = useState([250, 250, 250, 250]);
 
   useEffect(() => {
     setTimeout(() => setReveal(true), 400);
@@ -30,19 +32,26 @@ const Binary = () => {
     });
   }, []);
 
-  // Responsive lens size
+  // Responsive lens size and orbit radii
   useEffect(() => {
     const handleResize = () => {
-      const vw = window.innerWidth;
-      const vh = window.innerHeight;
-      // Use clamp to ensure lens size is always responsive
-      // min 180px, ideal 60vw, max 420px
+      const vw = typeof window !== 'undefined' ? window.innerWidth : 420;
+      const vh = typeof window !== 'undefined' ? window.innerHeight : 420;
       const size = Math.max(180, Math.min(420, Math.round(Math.min(vw * 0.9, vh * 0.6, 0.6 * vw))));
       setLensSize(size);
+      // Calculate orbit radii for tips
+      const baseRadius = Math.min(size / 2 + 40, (vw * 0.45) - 60, (vh * 0.35) - 60);
+      const newOrbitRadii = tips.map((tip, i) => {
+        const isWide = (tip === 'No functions' || tip === "That’s Binary Lens.");
+        return baseRadius + (isWide ? 80 : 0);
+      });
+      setOrbitRadii(newOrbitRadii);
     };
     handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
   }, []);
 
   return (
@@ -98,11 +107,7 @@ const Binary = () => {
         >
           {tips.map((tip, i) => {
             const angle = (i / tips.length) * 2 * Math.PI - Math.PI / 2;
-            // For 'No functions' and 'That’s Binary Lens.', use a much larger orbit radius
-            const isWide = (tip === 'No functions' || tip === "That’s Binary Lens.");
-            // Orbit radius: always fit in parent, never overflow
-            const baseRadius = Math.min(lensSize / 2 + 40, (window.innerWidth * 0.45) - 60, (window.innerHeight * 0.35) - 60);
-            const orbitRadius = baseRadius + (isWide ? 80 : 0); // reduce extra for mobile
+            const orbitRadius = orbitRadii[i] || 250;
             const x = Math.cos(angle) * orbitRadius;
             const y = Math.sin(angle) * orbitRadius;
             return (
