@@ -91,8 +91,8 @@ const Navbar = () => {
           <nav className='hidden md:block'>
             <ul className='flex flex-wrap gap-x-4 lg:gap-x-8 gap-y-2 '>
               <li tabIndex={0} className='hover:text-stone-500 hover:transition-all duration-300 cursor-pointer px-2 py-1 rounded-md focus:outline-none focus:bg-neutral-800/50' onClick={() => router.push('/translate')}>Translate</li>
-              <li tabIndex={0} className='hover:text-stone-500 hover:transition-all duration-300 cursor-pointer px-2 py-1 rounded-md focus:outline-none focus:bg-neutral-800/50'>Protocol Flow</li>
-              <li tabIndex={0} className='hover:text-stone-500 hover:transition-all duration-300 cursor-pointer px-2 py-1 rounded-md focus:outline-none focus:bg-neutral-800/50'>Binary Lens</li>
+              <li tabIndex={0} className='hover:text-stone-500 hover:transition-all duration-300 cursor-pointer px-2 py-1 rounded-md focus:outline-none focus:bg-neutral-800/50' onClick={() => router.push('/protocol-flow')}>Protocol Flow</li>
+              <li tabIndex={0} className='hover:text-stone-500 hover:transition-all duration-300 cursor-pointer px-2 py-1 rounded-md focus:outline-none focus:bg-neutral-800/50' onClick={() => router.push('/binary-lens')}>Binary Lens</li>
               <li tabIndex={0} className='hover:text-stone-500 hover:transition-all duration-300 cursor-pointer px-2 py-1 rounded-md focus:outline-none focus:bg-neutral-800/50'>Algorithmic Pulse</li>
             </ul>
           </nav>
