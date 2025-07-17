@@ -1,44 +1,52 @@
 "use client"
 
 import React, { useState, useEffect, useRef } from 'react';
-import { mainText, smallMainText } from './BinaryText';
+
+// Algorithm-related texts
+const mainText =
+  "Algorithms are the heartbeat of Binetic—turning logic into action, patterns into power, and complexity into clarity.";
+const smallMainText =
+  "From sorting to searching, every operation is a dance of precision and purpose. Welcome to the pulse of computation.";
 
 const tips = [
-  'No variables',
-  'No functions',
-  'Just voltage on, voltage off.',
-  "That’s Binary Lens.",
+  'Step-by-step logic',
+  'Pattern recognition',
+  'Efficiency matters',
+  'Binetic: Algorithmic Pulse',
 ];
 
-// Highlight 'Binary' and 'Lens' in header
+// Highlight 'Algorithm', 'Pulse', and 'Binetic' in header
 const highlightHeader = (text: string) => {
-  const parts = text.split(/(Binary|Lens)/gi);
+  const parts = text.split(/(Algorithm|Pulse|Binetic)/gi);
   return parts.map((part, i) => {
-    if (/^binary$/i.test(part)) {
+    if (/^algorithm$/i.test(part)) {
       return <span key={i} className="text-blue-400 font-semibold">{part}</span>;
     }
-    if (/^lens$/i.test(part)) {
+    if (/^pulse$/i.test(part)) {
+      return <span key={i} className="text-green-400 font-semibold">{part}</span>;
+    }
+    if (/^binetic$/i.test(part)) {
+      return <span key={i} className="text-gray-500 font-semibold">{part}</span>;
+    }
+    return part;
+  });
+};
+
+// Highlight 'Algorithm' and 'Pulse' in main bullet
+const highlightMainBullet = (text: string) => {
+  const parts = text.split(/(Algorithm|Pulse)/gi);
+  return parts.map((part, i) => {
+    if (/^algorithm$/i.test(part)) {
+      return <span key={i} className="text-blue-400 font-semibold">{part}</span>;
+    }
+    if (/^pulse$/i.test(part)) {
       return <span key={i} className="text-green-400 font-semibold">{part}</span>;
     }
     return part;
   });
 };
 
-// Highlight 'voltage' and 'Binary' in main bullet
-const highlightMainBullet = (text: string) => {
-  const parts = text.split(/(voltage|Binary)/gi);
-  return parts.map((part, i) => {
-    if (/^voltage$/i.test(part)) {
-      return <span key={i} className="text-gray-500 font-semibold">{part}</span>;
-    }
-    if (/^binary$/i.test(part)) {
-      return <span key={i} className="text-blue-400 font-semibold">{part}</span>;
-    }
-    return part;
-  });
-};
-
-const Binary = () => {
+const Algorithm = () => {
   const [showHeader, setShowHeader] = useState(false);
   const [showMainDecs, setShowMainDecs] = useState(false);
   const [showSmallDec, setShowSmallDec] = useState(false);
@@ -105,27 +113,27 @@ const Binary = () => {
     <main className="w-full min-h-screen bg-black flex flex-col items-center justify-center px-4 py-8">
       <header className={`w-full flex justify-center transition-all duration-700 ${showHeader ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}> 
         <h1 className="text-white font-bold text-center break-words text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl max-w-5xl">
-          {highlightHeader('Binary Lens')}
+          {highlightHeader('Algorithmic Pulse of Binetic')}
         </h1>
       </header>
       <section className="w-full flex flex-col items-center">
         <p className={`text-white/40 font-semibold text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl text-center mt-8 sm:mt-10 md:mt-12 lg:mt-16 xl:mt-20 mb-2 transition-all duration-700 ${showMainDecs ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}> 
-            {mainText.replace('exporesstions', 'expressions')}
+          {mainText}
         </p>
         <p className={`text-white/40 font-semibold text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl text-center mt-16 transition-all duration-700 ${showSmallDec ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}> 
-            {smallMainText.replace('opration', 'operation')}
+          {smallMainText}
         </p>
       </section>
       <section ref={bulletSectionRef} className={`w-full mt-40 flex flex-col justify-start transition-all duration-700`}>
         <h2 className={`text-white font-medium text-lg sm:text-xl md:text-4xl lg:text-5xl xl:text-6xl text-left w-full transition-all duration-700 ${showMainBullet ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}> 
-          {highlightMainBullet('Binary: Just voltage on, voltage off.')}
+          {highlightMainBullet('Algorithmic Pulse: The rhythm of logic in motion.')}
         </h2>
         <hr className={`w-[75%] border-t border-white/20 my-8 transition-all duration-700 ${showLine ? 'opacity-80 scale-x-100' : 'opacity-0 scale-x-50'}`} />
         <div className="w-full mt-6">
           <ul className="list-none space-y-4 w-full">
             {tips.map((tip, index) => {
               const isOpen = openIndex === index;
-            return (
+              return (
                 <li key={index} className={`text-white/90 flex flex-col items-start transition-all duration-700 ${showBullets[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}> 
                   <button
                     className={`flex items-center font-semibold focus:outline-none transition-colors duration-300 hover:text-blue-400 cursor-pointer ${isOpen ? 'shine-text' : ''}`}
@@ -148,16 +156,15 @@ const Binary = () => {
                     }}
                   >
                     <div className="text-white/60">
-                      {/* You can add more detailed explanations for each tip here if needed */}
-                      {tip === 'No variables' && 'Binary logic operates without variables—just two states: on or off.'}
-                      {tip === 'No functions' && 'There are no functions in pure binary logic, only direct transitions.'}
-                      {tip === 'Just voltage on, voltage off.' && 'Binary is the foundation: voltage high (1) or low (0), nothing in between.'}
-                      {tip === 'That’s Binary Lens.' && 'A perspective that reduces all complexity to the simplest form: binary.'}
+                      {tip === 'Step-by-step logic' && 'Every algorithm is a sequence of logical steps, each building on the last to solve a problem.'}
+                      {tip === 'Pattern recognition' && 'Algorithms excel at finding order in chaos—spotting patterns that drive innovation.'}
+                      {tip === 'Efficiency matters' && 'The best algorithms do more with less, optimizing time and resources for maximum impact.'}
+                      {tip === 'Binetic: Algorithmic Pulse' && 'At Binetic, algorithms are more than code—they are the pulse that powers progress.'}
                     </div>
-              </div>
+                  </div>
                 </li>
-            );
-          })}
+              );
+            })}
           </ul>
         </div>
       </section>
@@ -183,5 +190,4 @@ const Binary = () => {
   );
 };
 
-export default Binary;
-
+export default Algorithm;

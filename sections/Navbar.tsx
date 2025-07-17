@@ -93,7 +93,7 @@ const Navbar = () => {
               <li tabIndex={0} className='hover:text-stone-500 hover:transition-all duration-300 cursor-pointer px-2 py-1 rounded-md focus:outline-none focus:bg-neutral-800/50' onClick={() => router.push('/translate')}>Translate</li>
               <li tabIndex={0} className='hover:text-stone-500 hover:transition-all duration-300 cursor-pointer px-2 py-1 rounded-md focus:outline-none focus:bg-neutral-800/50' onClick={() => router.push('/protocol-flow')}>Protocol Flow</li>
               <li tabIndex={0} className='hover:text-stone-500 hover:transition-all duration-300 cursor-pointer px-2 py-1 rounded-md focus:outline-none focus:bg-neutral-800/50' onClick={() => router.push('/binary-lens')}>Binary Lens</li>
-              <li tabIndex={0} className='hover:text-stone-500 hover:transition-all duration-300 cursor-pointer px-2 py-1 rounded-md focus:outline-none focus:bg-neutral-800/50'>Algorithmic Pulse</li>
+              <li tabIndex={0} className='hover:text-stone-500 hover:transition-all duration-300 cursor-pointer px-2 py-1 rounded-md focus:outline-none focus:bg-neutral-800/50' onClick={() => router.push('/algorithmic-pulse')}>Algorithmic Pulse</li>
             </ul>
           </nav>
 
